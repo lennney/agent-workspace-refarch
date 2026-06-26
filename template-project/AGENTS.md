@@ -45,3 +45,11 @@ Python 3.12 / FastAPI 0.115 / SQLAlchemy 2.0 / PostgreSQL 16 / uv
 - 架构: `docs/architecture.md`
 - 陷阱: `docs/troubleshooting.md`
 - 决策: `docs/decisions/`
+- 踩坑: `LEARNINGS.md`（Agent 自动追加，不需要手动维护）
+
+## Agent 规则
+
+- 每次完成任务后，更新 HANDOVER.md
+- 踩到新坑时，运行: `bash hooks/on-lesson.sh "<问题描述>" 踩坑`
+- 发现架构洞察时，运行: `bash hooks/on-lesson.sh "<发现>" 发现`
+- 把重复出现的坑写入上方"陷阱"段（三段式：症状→原因→解决）

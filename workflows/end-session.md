@@ -19,6 +19,10 @@ Step 2 [1min]  如有架构决策 → 写 ADR
 Step 3 [30s]   如有新陷阱 → 更新 AGENTS.md
   → 添加到"已知陷阱"（三段式）
 
+Step 3b [10s]  如有踩坑/发现 → 运行 on-lesson.sh
+  → bash hooks/on-lesson.sh "<问题>" 踩坑
+  → LEARNINGS.md 自动追加
+
 Step 4 [30s]   如有跨项目变更 → 更新 shared/ 文档
   → api-contracts.md 或 architecture-overview.md
 
