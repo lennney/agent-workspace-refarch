@@ -1,0 +1,27 @@
+name: agents-lint
+
+on:
+  push:
+    paths:
+      - 'AGENTS.md'
+      - '**/AGENTS.md'
+      - 'package.json'
+  schedule:
+    - cron: '0 9 * * 1'  # 每周一，因为 codebase 会变但 AGENTS.md 不会
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run agents-lint
+        run: npx agents-lint --max-warnings 5
+      - name: Check HANDOVER freshness
+        run: |
+          for f in $(find . -name HANDOVER.md -not -path '*/node_modules/*'); do
+            age=$(( ($(date +%s) - $(stat -c %Y "$f")) / 86400 ))
+            if [ $age -gt 30 ]; then
+              echo "⚠ $f 已 $age 天未更新"
+              exit 1
+            fi
+          done

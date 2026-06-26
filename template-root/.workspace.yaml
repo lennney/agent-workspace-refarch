@@ -1,0 +1,20 @@
+# 工作空间配置
+
+# MCP 服务声明（以下二选一）
+mcp_servers:
+  # CodeGraph — 本地代码知识图谱
+  codegraph:
+    command: npx
+    args: ["-y", "@colbymchenry/codegraph"]
+
+  # 或 GitNexus
+  # gitnexus:
+  #   command: npx
+  #   args: ["gitnexus"]
+
+# 工作区项目索引（用于跨项目图谱）
+projects:
+  - path: ./project-a
+    name: project-a
+  - path: ./project-b
+    name: project-b
