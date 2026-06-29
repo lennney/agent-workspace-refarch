@@ -49,7 +49,15 @@ project/
 ## 快速启动
 
 ```bash
+# Python 项目（默认）
 bash setup.sh /path/to/workspace project-a project-b
+
+# Node.js / JS 项目
+bash setup.sh /path/to/workspace project-a project-b --type js
+
+# 同时安装 hooks
+INSTALL_HOOKS=y bash setup.sh /path/to/workspace project-a --type js
+
 cd /path/to/workspace && ln -sf AGENTS.md CLAUDE.md
 npx agents-lint --fix
 ```

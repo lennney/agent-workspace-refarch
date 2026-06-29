@@ -3,3 +3,6 @@ node_modules/
 .claude/session_state/
 .gitkeep
 *.log
+
+# CLAUDE.md is a symlink to AGENTS.md, managed by setup.sh
+CLAUDE.md
