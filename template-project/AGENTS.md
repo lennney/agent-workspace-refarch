@@ -1,55 +1,79 @@
-# Agent — [项目名]
+# Agent - [项目名]
 
-一句话： [项目做什么]
+一句话：`[项目名]` 是 [面向谁、解决什么问题、首版聚焦什么范围]。
+
+## 当前阶段
+
+[说明项目处于探索、设计、实现、alpha、维护中的哪一阶段。]
+
+当前优先事项：
+
+1. [优先事项 1]
+2. [优先事项 2]
+3. [优先事项 3]
+
+## 常用文档
+
+- 产品/目标来源：`docs/product/prd.md` 或 [项目的权威产品文档]
+- 技术设计：`docs/architecture.md` 或 [项目的权威设计文档]
+- 当前计划：`docs/active_plan.md`
+- 当前交接：`HANDOVER.md`
+- 长期经验：`LEARNINGS.md`
+- 文档导航：`docs/index.md`
 
 ## 命令
 
 ```bash
-# 运行
-uv run python -m server
+# 安装依赖
+[command]
+
+# 本地运行
+[command]
 
 # 测试
-uv run pytest tests/ -v
+[command]
 
-# 格式化+检查
-uv run ruff format . && uv run ruff check --fix
-
-# 数据库迁移
-uv run alembic upgrade head
+# 格式化和检查
+[command]
 ```
 
 ## 技术栈
 
-Python 3.12 / FastAPI 0.115 / SQLAlchemy 2.0 / PostgreSQL 16 / uv
+- 运行时/语言：[例如 TypeScript + Node.js]
+- 主要框架/库：[填写]
+- 包管理器：[填写]
+- 测试工具：[填写]
 
-## 约束（按优先级）
+## 当前技术判断
 
-1. 所有密钥从 `.env` 读取，禁止硬编码
-2. 数据库迁移只能 ADD，不能 DROP/RENAME
-3. 测试覆盖率不低于 80%
-4. 公共 API 必须带 OpenAPI 描述
+- 首版形态：[CLI / Web app / 服务 / 库 / 其他]
+- 首版范围：[v1 明确服务谁或哪类场景]
+- 核心能力：[小范围列出命令或功能]
+- 证据/数据来源：[本地文件、数据库、API、transcript 等]
+- 非目标：[v1 现在不做什么]
+
+## 约束
+
+1. 任何实现选择都必须服务当前产品/目标文档，而不是反过来扩张范围。
+2. 默认优先采用本地优先、低风险、可解释的方案，除非产品文档明确要求不同方向。
+3. 可以复用成熟模式和小型工具逻辑，但核心领域判断必须由本项目自己掌握。
 
 ## 边界
 
-- ✅ **Always:** 运行测试、更新 HANDOVER.md、修复 lint
-- ⚠️ **Ask:** 加依赖、改 schema、改公共 API 签名
-- 🚫 **Never:** 硬编码密钥、删除测试、改已有迁移
+- `Always`：完成较完整工作后更新 `HANDOVER.md`，保持 `docs/index.md` 准确，重要决策写入文档或 ADR
+- `Ask`：新增重依赖、切换主技术栈、改变首版定位、修改公开契约
+- `Never`：为了“功能全”把产品做成另一类东西，删除测试来换进度，把高风险行为藏进自动化
 
-## 陷阱（症状 → 原因 → 解决）
+## 已知陷阱
 
-- 服务 502 → 连接池耗尽 → `pool_size=20`
-- 迁移回滚失败 → Alembic DDL 不回滚 → 先备份再迁移
+使用“症状 -> 原因 -> 解决”的三段式。
 
-## 按需文档
-
-- 架构: `docs/architecture.md`
-- 陷阱: `docs/troubleshooting.md`
-- 决策: `docs/decisions/`
-- 踩坑: `LEARNINGS.md`（Agent 自动追加，不需要手动维护）
+- [症状] -> [原因] -> [解决]
 
 ## Agent 规则
 
-- 每次完成任务后，更新 HANDOVER.md
-- 踩到新坑时，运行: `bash hooks/on-lesson.sh "<问题描述>" 踩坑`
-- 发现架构洞察时，运行: `bash hooks/on-lesson.sh "<发现>" 发现`
-- 把重复出现的坑写入上方"陷阱"段（三段式：症状→原因→解决）
+- 开始较完整工作前，先读 `AGENTS.md`、`HANDOVER.md`、`docs/index.md`、`docs/active_plan.md`。
+- 完成一次有意义的工作切片后，更新 `HANDOVER.md`。
+- 长期有效的流程经验或技术经验写入 `LEARNINGS.md`。
+- 如果目录结构变化，必须在同一轮更新 `docs/index.md`。
+- 如果产品边界、v1 范围或实现栈变化，优先更新产品/设计/计划文档。
