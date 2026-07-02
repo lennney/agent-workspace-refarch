@@ -1,29 +1,42 @@
-# 项目文档索引
+# Docs Index
 
-> Agent 自动生成的文档导航。列出所有可用文档及其读取时机。
+This file is the entry point for project documentation. 文档新增、移动、拆分或废弃时，同步更新这里。
 
-## 总是加载
+## Read First
 
-| 文件 | 内容 | 读取时机 |
-|------|------|---------|
-| `AGENTS.md` | 技术栈、命令、约束 | session 启动自动加载 |
-| `docs/index.md` | 本文件，文档导航 | 首次进入 docs/ 时 |
+| 文件 | 用途 | 读取时机 |
+|------|------|----------|
+| `AGENTS.md` | Agent 和协作者的项目规则 | 每次 session 开始 |
+| `HANDOVER.md` | 当前状态、近期变更、决策和阻塞项 | session 启动或恢复时 |
+| `docs/active_plan.md` | 当前切片 checklist 和完成标准 | 开始实现切片前 |
+| `LEARNINGS.md` | 长期经验和重复陷阱 | 做相似任务前 |
 
-## 按需加载
+## 产品文档
 
-| 文件 | 内容 | 读取时机 |
-|------|------|---------|
-| `docs/active_plan.md` | 当前任务拆解 | 开始新任务时 |
-| `docs/architecture.md` | 架构设计 | 涉及模块拆解时 |
-| `docs/conventions.md` | 编码规范 | 新增文件时 |
-| `docs/deployment.md` | 部署流程 | 上线前 |
-| `docs/troubleshooting.md` | 已知问题诊断 | 遇到报错时 |
-| `docs/known_issues.md` | 已知 bug 和方案 | 遇到异常行为时 |
-| `docs/decisions/` | 架构决策记录 | 涉及架构变更时 |
+| 文件 | 用途 |
+|------|------|
+| `docs/product/prd.md` | 如果项目有产品要求或项目 brief，这里放权威版本 |
+| `docs/research/` | 研究记录和外部参考，如适用 |
 
-## 会话记录
+## 工作文档
 
-| 文件 | 内容 | 读取时机 |
-|------|------|---------|
-| `HANDOVER.md` | 会话日志+变更记录 | 每次 session 开始 |
-| `docs/history/` | 归档会话记录 | 需要回溯时 |
+| 文件 | 用途 |
+|------|------|
+| `docs/architecture.md` | 仓库、模块或系统架构 |
+| `docs/conventions.md` | 命名、结构、风格和测试约定 |
+| `docs/deployment.md` | 发布、部署或打包说明 |
+| `docs/troubleshooting.md` | 诊断步骤和常见失败模式 |
+| `docs/known_issues.md` | 已知问题和当前 workaround |
+
+## 运维文档
+
+| 文件 | 用途 |
+|------|------|
+| `docs/decisions/` | 架构决策记录和长期 trade-off |
+| `docs/history/` | handover 和 learning 的归档记录 |
+
+## Notes
+
+- `HANDOVER.md` 保持短而当前；旧记录及时归档。
+- 长期经验放在 `LEARNINGS.md`，不要只停留在 session notes。
+- 改文档结构的同一轮，必须同步改这个索引。

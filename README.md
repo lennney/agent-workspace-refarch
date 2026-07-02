@@ -20,6 +20,7 @@ npx create-agent-workspace ./my-workspace svc-a svc-b --hooks --ci
 | 多项目间找不到依赖关系 | 外层 `AGENTS.md` 项目地图 + CodeGraph/GitNexus 图谱 |
 | Agent 不记得更新手账 | `SessionEnd` 自动写 HANDOVER.md |
 | 上下文文件过时误导 agent | `agents-lint` 每周校验 + pre-commit hook |
+| 真实项目沉淀无法回到模板 | `workflows/backport-from-live-workspace.md` 提炼可复用实践 |
 
 ## 三层架构
 
@@ -31,6 +32,7 @@ Layer 1: Workspace（工作区）
 Layer 2: Per-Project（每个子项目）
 ├── AGENTS.md         ← 技术栈 + 命令 + 约束
 ├── HANDOVER.md       ← 会话日志（80 行自动归档）
+├── LEARNINGS.md      ← 长期经验和重复陷阱
 ├── CLAUDE.md → AGENTS.md  ← 兼容 symlink
 └── docs/
     ├── index.md          ← 文档导航
@@ -83,9 +85,11 @@ npx agents-lint --fix
 | 外层 `AGENTS.md` | 项目地图 + 依赖关系 | ≤60 |
 | 项目内 `AGENTS.md` | 技术栈 + 命令 + 约束 | ≤150 |
 | `HANDOVER.md` | 会话日志 + 变更记录 | 80（自动归档） |
+| `LEARNINGS.md` | 长期经验 + 重复陷阱 | 按需 |
 | `docs/decisions/ADR-YYYYMMDD` | 架构决策记录 | 单文件 |
 | `docs/active_plan.md` | 当前任务拆解 | 按需 |
 | `docs/known_issues.md` | 已知 bug 和临时方案 | 按需 |
+| `workflows/backport-from-live-workspace.md` | 从真实 workspace 反哺模板 | 按需 |
 | `tools/validate.sh` | 轻量校验 | — |
 | `tools/pre-commit.sh` | git commit 自动检查 | — |
 
