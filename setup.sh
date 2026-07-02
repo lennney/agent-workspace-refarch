@@ -86,6 +86,10 @@ for PROJ in "${POSITIONAL_ARGS[@]}"; do
     cp "$SCRIPT_DIR/template-project/HANDOVER.md" "$PROJ_DIR/HANDOVER.md"
     echo "  ✓ HANDOVER.md"
   fi
+  if [ ! -f "$PROJ_DIR/LEARNINGS.md" ]; then
+    cp "$SCRIPT_DIR/template-project/LEARNINGS.md" "$PROJ_DIR/LEARNINGS.md"
+    echo "  ✓ LEARNINGS.md"
+  fi
   if [ ! -d "$PROJ_DIR/docs" ]; then
     mkdir -p "$PROJ_DIR/docs/decisions" "$PROJ_DIR/docs/history"
     # 复制 docs/ 下所有文件
